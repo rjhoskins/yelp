@@ -1,0 +1,28 @@
+<% include ./partials/header  %>
+
+
+   <h1 class="d-flex justify-content-center">Sign Up!</h1>
+   <div class="mx-auto" style="width: 30%;">
+      <form action="/register" method="POST">
+         <div class="form-group ">
+            <input class="form-control " type="text " name="username" placeholder="select a user name" />
+         </div>
+          <div class="form-group "><div class="form-group ">
+            <input class="form-control " type="text " name="user[passwordfirst]" placeholder="password" />
+         </div>
+         <div class="form-group ">
+            <input class="form-control " type="text " name="password" placeholder="repeat password" />
+         </div>
+         <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block ">Submit!</button>
+         </div>
+      </form>
+      <a href="/register ">Go Back...</a>
+   </div>
+
+</div>
+
+
+
+
+<% include ./partials/footer  %>
