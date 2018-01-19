@@ -16,7 +16,7 @@ var flash = require("connect-flash");
 //mongoose.connect("mongodb://localhost/yelp_camp", {
 //   useMongoClient: true });
 mongoose.connect("mongodb://admin:admin@ds149040.mlab.com:49040/yelpcampexplanationpointlol", {
-   useMongoClient: true
+   //useMongoClient: true
    /* other options */
 });
 mongoose.Promise = global.Promise;
