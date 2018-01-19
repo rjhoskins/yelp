@@ -11,14 +11,10 @@ var methodOverride = require("method-override")
 var expressSanitizer = require('express-sanitizer');
 var flash = require("connect-flash");
 
+var url = (process.env.DATABASE_URL) ? process.env.DATABASE_URL : "mongodb://localhost/yelp_camp";
+console.log(url);
 
-
-//mongoose.connect("mongodb://localhost/yelp_camp", {
-//   useMongoClient: true });
-mongoose.connect("mongodb://admin:admin@ds149040.mlab.com:49040/yelpcampexplanationpointlol", {
-   //useMongoClient: true
-   /* other options */
-});
+mongoose.connect(process.env.DATABASE_URL);
 mongoose.Promise = global.Promise;
 
 //Schema imports
