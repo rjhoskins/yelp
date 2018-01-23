@@ -10,8 +10,7 @@ var strategy = require("passport-local-mongoose");
 var methodOverride = require("method-override")
 var expressSanitizer = require('express-sanitizer');
 var flash = require("connect-flash");
-var helmet = require('helmet')
-var express_enforces_ssl = require('express-enforces-ssl');
+
 
 var url = (process.env.DATABASE_URL) ? process.env.DATABASE_URL : "mongodb://localhost/yelp_camp";
 console.log(url);
@@ -29,9 +28,7 @@ var campgroundsRoutes = require("./routes/campgrounds");
 var indexRoutes = require("./routes/index");
 
 
-//app.enable('trust proxy');
-app.use(helmet());
-app.use(express_enforces_ssl());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSanitizer()); // this line follows bodyParser() instantiations
 app.set("view engine", "ejs");
