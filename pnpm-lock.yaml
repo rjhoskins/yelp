@@ -42,7 +42,7 @@ dependencies:
     specifier: ^2.3.10
     version: 2.3.10
   mongoose:
-    specifier: ^5.0.0-rc2
+    specifier: ^5.13.22
     version: 5.13.22
   passport:
     specifier: ^0.4.0

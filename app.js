@@ -12,11 +12,14 @@ var expressSanitizer = require('express-sanitizer');
 var flash = require("connect-flash");
 
 //spin up the local db in dockerfile for local dev (see directions in file)
-var URL_STRING = (process.env.URL_STRING) ? process.env.URL_STRING : "mongodb://localhost:27017/yelp_camp";
-var PORT = (process.env.PORT) ? process.env.PORT : "3000";
-console.log(URL_STRING);
 
-mongoose.connect(URL_STRING);
+const LOCAL_MONGO = "mongodb://localhost:27017/yelp_camp"
+
+var URI_STRING = (process.env.URI_STRING) ? process.env.URI_STRING : PROD_MONGO ;
+var PORT = (process.env.PORT) ? process.env.PORT : "3000";
+console.log(URI_STRING);
+
+mongoose.connect(URI_STRING, { useNewUrlParser: true, useUnifiedTopology: true  });
 mongoose.Promise = global.Promise;
 
 //Schema imports
@@ -38,7 +41,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-seedDB();
+// seedDB();
 // clearDB()
 
 
