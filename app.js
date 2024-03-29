@@ -11,11 +11,12 @@ var methodOverride = require("method-override")
 var expressSanitizer = require('express-sanitizer');
 var flash = require("connect-flash");
 
+//spin up the local db in dockerfile for local dev (see directions in file)
+var URL_STRING = (process.env.URL_STRING) ? process.env.URL_STRING : "mongodb://localhost:27017/yelp_camp";
+var PORT = (process.env.PORT) ? process.env.PORT : "3000";
+console.log(URL_STRING);
 
-var url = (process.env.DATABASE_URL) ? process.env.DATABASE_URL : "mongodb://localhost/yelp_camp";
-console.log(url);
-
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(URL_STRING);
 mongoose.Promise = global.Promise;
 
 //Schema imports
@@ -23,6 +24,7 @@ var Campground = require("./models/campground");
 var Comment = require("./models/comment");
 var User = require("./models/user");
 var seedDB = require("./utilities/dataseed");
+var clearDB = require("./utilities/dataseed");
 var commentsRoutes = require("./routes/comments");
 var campgroundsRoutes = require("./routes/campgrounds");
 var indexRoutes = require("./routes/index");
@@ -36,12 +38,14 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-//seedDB();
+seedDB();
+// clearDB()
+
+
+
 //===============
 //PASSPORT CONFIG
 //===============
-
-
 app.use(require("express-session")({
    secret: 'use abacadaba',
    resave: false,
@@ -54,8 +58,6 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-
-
 app.set("view engine", "ejs");
 app.use(function (req, res, next) {
    res.locals.currentUser = req.user
@@ -64,12 +66,12 @@ app.use(function (req, res, next) {
    next();
 });
 
-
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 app.use("/campgrounds/:id/comments", commentsRoutes);
 
 
-app.listen(process.env.PORT, process.env.IP, function () {
-   console.log("To infinity and beyond");
+
+app.listen(PORT, function () {
+   console.log(`To infinity and beyond ==> on port ${PORT}`);
 });

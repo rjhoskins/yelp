@@ -59,3 +59,4 @@ function addCampgrounds(arr, cmnt) {
 
 
 module.exports = seedDB;
+module.exports = clearDB;
