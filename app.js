@@ -15,7 +15,7 @@ var flash = require("connect-flash");
 
 const LOCAL_MONGO = "mongodb://localhost:27017/yelp_camp"
 
-var URI_STRING = (process.env.URI_STRING) ? process.env.URI_STRING : PROD_MONGO ;
+var URI_STRING = (process.env.URI_STRING) ? process.env.URI_STRING : LOCAL_MONGO ;
 var PORT = (process.env.PORT) ? process.env.PORT : "3000";
 console.log(URI_STRING);
 
