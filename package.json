@@ -22,6 +22,7 @@
     "helmet": "^3.9.0",
     "luxon": "^0.2.4",
     "method-override": "^2.3.10",
+    "mongodb": "^6.5.0",
     "mongoose": "^5.13.22",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
