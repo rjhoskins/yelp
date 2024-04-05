@@ -19,7 +19,9 @@ var URI_STRING = (process.env.URI_STRING) ? process.env.URI_STRING : LOCAL_MONGO
 var PORT = (process.env.PORT) ? process.env.PORT : "3000";
 console.log(URI_STRING);
 
-mongoose.connect(URI_STRING, { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(URI_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
+// keep just in case, next step...
+// mongoose.connect(URI_STRING, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
 mongoose.Promise = global.Promise;
 
 //Schema imports
